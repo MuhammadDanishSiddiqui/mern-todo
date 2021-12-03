@@ -37,7 +37,7 @@ function handleInput(e)
             setIsLoading(true)
             const response =  await tasksServices.addTask(newTask)
             dispatch(getTasks())
-            setFilterText()
+            setFilterText("all")
             const updatedTasks = [
                 ...tasks,
                 newTask
@@ -62,7 +62,7 @@ function handleInput(e)
         try {
             setIsLoading(true)
             const response =  await tasksServices.updateTask(task._id,{completed:!task.completed})
-            setFilterText()
+            setFilterText("all")
             dispatch(getTasks())
             const originalTasks = [...tasks]
             const updatedIndex = originalTasks.findIndex((tsk,index)=>{
@@ -88,7 +88,7 @@ function handleInput(e)
         try {
             setIsLoading(true)
             const response =  await tasksServices.deleteTask(task._id)
-            setFilterText()
+            setFilterText("all")
             dispatch(getTasks())
             const originalTasks = [...tasks]
             const updatedIndex = originalTasks.findIndex((tsk,index)=>{
